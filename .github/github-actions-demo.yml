@@ -1,0 +1,14 @@
+name: Version Upgrader
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  verion-update:
+    name: Version Update
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
