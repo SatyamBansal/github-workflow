@@ -14,9 +14,8 @@ jobs:
       - name: Listing pwd
         run: |
           ls
-      - name: running script
-        run: |
-        chmod +x updateVersion.sh
-        git add iosVersion.txt
-        git -c user.name="bot" user.email="bot@github.com" commit -m "updated ios version"
-        git push origin 
+
+      - run: chmod +x updateVersion.sh
+      - run: git add iosVersion.txt
+      - run: git -c user.name="bot" user.email="bot@github.com" commit -m "updated ios version"
+      - run: git push origin 
