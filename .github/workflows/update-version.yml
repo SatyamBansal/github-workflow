@@ -15,32 +15,43 @@ jobs:
             const comment = context.payload.comment.body;
             if (comment.includes(phrase)) {
               console.log(`Comment contains "${phrase}"`);
-              // Set execute permission on the script
-              const chmod = require('child_process').exec;
-              chmod('chmod +x updateVersion.sh', (error, stdout, stderr) => {
+              // List files in the working directory
+              const ls = require('child_process').exec;
+              ls('ls', (error, stdout, stderr) => {
                 console.log(stdout);
                 console.error(stderr);
                 if (error !== null) {
-                  console.error(`chmod error: ${error}`);
+                  console.error(`ls error: ${error}`);
                 } else {
-                  console.log(`Execute permission set on updateVersion.sh`);
-                  // Run the updateVersion.sh script
-                  const exec = require('child_process').exec;
-                  exec('sh updateVersion.sh', (error, stdout, stderr) => {
+                  console.log(`Files listed successfully`);
+                  // Set execute permission on the script
+                  const chmod = require('child_process').exec;
+                  chmod('chmod +x updateVersion.sh', (error, stdout, stderr) => {
                     console.log(stdout);
                     console.error(stderr);
                     if (error !== null) {
-                      console.error(`exec error: ${error}`);
+                      console.error(`chmod error: ${error}`);
                     } else {
-                      console.log(`Script ran successfully`);
-                      // Push the updated code to the release branch
-                      exec('git push origin release', (error, stdout, stderr) => {
+                      console.log(`Execute permission set on updateVersion.sh`);
+                      // Run the updateVersion.sh script
+                      const exec = require('child_process').exec;
+                      exec('sh updateVersion.sh', (error, stdout, stderr) => {
                         console.log(stdout);
                         console.error(stderr);
                         if (error !== null) {
                           console.error(`exec error: ${error}`);
                         } else {
-                          console.log(`Code pushed to release branch`);
+                          console.log(`Script ran successfully`);
+                          // Push the updated code to the release branch
+                          exec('git push origin release', (error, stdout, stderr) => {
+                            console.log(stdout);
+                            console.error(stderr);
+                            if (error !== null) {
+                              console.error(`exec error: ${error}`);
+                            } else {
+                              console.log(`Code pushed to release branch`);
+                            }
+                          });
                         }
                       });
                     }
