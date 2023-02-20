@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checking out code
-        uses: actions/checkout@v3
         run: |
           echo "I am first"
+      - uses: actions/checkout@v3
       - name: Listing pwd
         run: |
           ls
