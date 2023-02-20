@@ -41,3 +41,10 @@ jobs:
                           console.error(`exec error: ${error}`);
                         } else {
                           console.log(`Code pushed to release branch`);
+                        }
+                      });
+                    }
+                  });
+                }
+              });
+            }
