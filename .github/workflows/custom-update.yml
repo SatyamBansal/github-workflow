@@ -1,0 +1,15 @@
+name: Test action
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  verion-update:
+    name: Version Update
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Name
+        run: |
+          echo "I am first"
+      - name: second Name
+        run: |
+          echo "I am second"
