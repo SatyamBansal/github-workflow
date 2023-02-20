@@ -4,12 +4,13 @@ on:
     types: [created]
 jobs:
   verion-update:
-    name: Version Update
+    name: Taaza tazza action
     runs-on: ubuntu-latest
     steps:
-      - name: First Name
+      - name: Checking out code
+      - uses: actions/checkout@v3
         run: |
           echo "I am first"
-      - name: second Name
+      - name: Listing pwd
         run: |
-          echo "I am second"
+          ls
