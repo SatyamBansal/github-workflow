@@ -1,11 +1,6 @@
 name: Update IOS version
 on:
   workflow_dispatch:
-    inputs:
-      branch-name:
-        description: 'Branch to update'
-        required: true
-        default: 'main'
 
 jobs:
   update-version:
@@ -13,11 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Listing pwd
-        run: |
-          ls
       - run: chmod +x updateVersion.sh
       - run: ./updateVersion.sh
       - run: git add iosVersion.txt
-      - run: git -c user.name="bot" -c user.email="bot@github.com" commit -m "updated ios version"
+      - run: git -c user.name="GitHub Actions Bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "updated ios version" |
+          --author "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
       - run: git push origin 
