@@ -1,11 +1,6 @@
 name: Update IOS version
 on:
   workflow_dispatch:
-    inputs:
-      branch-name:
-        description: 'Branch to update'
-        required: true
-        default: 'main'
 
 jobs:
   update-version:
