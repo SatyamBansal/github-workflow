@@ -11,6 +11,5 @@ jobs:
       - run: chmod +x updateVersion.sh
       - run: ./updateVersion.sh
       - run: git add iosVersion.txt
-      - run: git -c user.name="GitHub Actions Bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "updated ios version" |
-          --author "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+      - run: git -c user.name="GitHub Actions Bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "updated ios version" 
       - run: git push origin 
